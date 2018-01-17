@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  get 'pages/home'
+  get 'users/new'
 
-  get 'pages/contact'
+  root 'pages#home'
 
-  get 'pages/about'
+  get '/contact' => 'pages#contact'
 
-  get 'pages/help'
+  get '/about' => 'pages#about'
+
+  get '/help' => 'pages#help'
+
+  get '/signup' => 'users#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
