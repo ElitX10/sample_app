@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :users
-  get '/signup' => 'users#new'
+
+  get 'signup' => 'cats#new'
+  #get 'cats/:id' => 'cats#show'
+  resources :cats
 
   #pages :
   root 'pages#home'
