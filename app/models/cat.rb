@@ -1,10 +1,10 @@
 class Cat < ApplicationRecord
-  attr_accessor :password
+  #attr_accessor :password
 
   validates :name, presence: {}, uniqueness: {}
   validates :email, presence: {}, uniqueness: {}
-  validates :password, presence: {}
-
+  validates :password, presence: {}, confirmation: { case_sensitive: true }
+  validates :password_confirmation, presence: {}
   before_save :encrypt_password
 
   def has_password?(password_soumis)

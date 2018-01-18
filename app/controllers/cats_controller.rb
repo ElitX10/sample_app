@@ -8,4 +8,21 @@ class CatsController < ApplicationController
     @cat = Cat.find(params[:id])
     @titre = @cat.name
   end
+
+  def create
+    @cat = Cat.new cat_params
+    if @cat.save
+      flash[:success] = "Bienvenue dans l'Application Exemple!"
+      redirect_to @cat
+    else
+      @titre = "Inscription"
+      render 'new'
+    end
+  end
+
+  private
+
+  def cat_params
+    params.require(:cat).permit(:name, :email, :password, :password_confirmation)
+  end
 end
