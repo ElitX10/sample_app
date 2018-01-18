@@ -1,1 +1,13 @@
-<%= @cat.name %>, <%= @cat.email %>
+<table class="profile" summary="Information profil">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= @cat.name %>
+      </h1>
+    </td>
+    <td class="sidebar round">
+      <strong>Nom</strong> <%= @cat.name %><br />
+      <strong>URL</strong>  <%= link_to cat_path(@cat), @cat %>
+    </td>
+  </tr>
+</table>
