@@ -3,9 +3,22 @@
   <%= link_to logo, root_path %>
   <nav class="round">
     <ul>
-      <li><%= link_to "Accueil", root_path %></li>
+      <li>
+        <% if session[:cat_id] %>
+          <%= link_to "Profil", cats_path + "/#{@current_user.id}" %>
+        <% else %>
+          <%= link_to "Accueil", root_path %>
+        <% end %>
+
+      </li>
       <li><%= link_to "Aide", help_path %></li>
-      <li><%= link_to "Connexion", signin_path %></li>
+      <li>
+        <% if session[:cat_id] %>
+          <%= link_to "Déconnexion", signout_path, :methode => :delete %>
+        <% else %>
+          <%= link_to "Connexion", signin_path %>
+        <% end %>
+      </li>
     </ul>
   </nav>
 </header>

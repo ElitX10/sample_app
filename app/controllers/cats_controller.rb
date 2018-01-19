@@ -13,6 +13,7 @@ class CatsController < ApplicationController
     @cat = Cat.new cat_params
     if @cat.save
       flash[:success] = "Bienvenue dans l'Application Exemple!"
+      session[:cat_id] = @cat.id
       redirect_to @cat
     else
       @titre = "Inscription"

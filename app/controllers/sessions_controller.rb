@@ -11,10 +11,15 @@ class SessionsController < ApplicationController
       @titre = "S'identifier"
       render 'new'
     else
-
+      session[:cat_id] = user.id
+      flash[:info] = "Vous êtes maintenant connecté"
+      redirect_to user
     end
   end
 
   def destroy
+    flash[:info] = "Vous êtes maintenant déconnecté"
+    session[:cat_id] = nil
+    redirect_to root_path
   end
 end

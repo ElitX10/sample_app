@@ -1,8 +1,10 @@
 class Cat < ApplicationRecord
   #attr_accessor :password
 
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   validates :name, presence: {}, uniqueness: {}
-  validates :email, presence: {}, uniqueness: {}
+  validates :email, presence: {}, uniqueness: {}, :format => {with: email_regex}
   validates :password, presence: {}, confirmation: { case_sensitive: true }
   validates :password_confirmation, presence: {}
   before_save :encrypt_password
