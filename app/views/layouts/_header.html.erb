@@ -9,6 +9,7 @@
           <%= link_to "Profil", cats_path + "/#{@current_user.id}" %>
         <% end %>
       </li>
+      <li><%= link_to "Liste utilisateurs", cats_path %></li>
       <li><%= link_to "Aide", help_path %></li>
       <li>
         <% if signed_in? %>

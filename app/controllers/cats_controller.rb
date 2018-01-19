@@ -41,6 +41,11 @@ class CatsController < ApplicationController
     end
   end
 
+  def index
+    @titre = "Tous les utilisateurs"
+    @cats = Cat.all
+  end
+
   private
 
   def authenticate
