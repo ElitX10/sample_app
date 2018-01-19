@@ -188,3 +188,8 @@ ul.users {
 .pagination{
     float: left;
 }
+
+.tabulation{
+    position: absolute;
+    left: 40%;
+}

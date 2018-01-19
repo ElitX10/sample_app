@@ -1,3 +1,10 @@
 <li>
   <%= link_to cat.name, cat %>
+  <% if signed_in?%>
+    <% if @current_user.admin? %>
+      <span class="tabulation">
+        | <%= link_to "supprimer", cat, method: :delete, data: {confirm: "Etes-vous certain ?" } %>
+      </span>
+    <% end %>
+  <% end %>
 </li>

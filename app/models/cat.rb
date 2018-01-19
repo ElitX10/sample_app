@@ -19,6 +19,10 @@ class Cat < ApplicationRecord
     return cat if cat.has_password?(submitted_password)
   end
 
+  def admin?
+    :admin
+  end
+
   private
 
   def encrypt_password

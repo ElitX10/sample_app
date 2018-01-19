@@ -1,6 +1,7 @@
 class CatsController < ApplicationController
-  before_action :authenticate, :only => [:edit, :update]
+  before_action :authenticate, :only => [:index, :edit, :update, :destroy]
   before_action :correct_user, :only => [:edit, :update]
+  before_action :admin_user, :only => :destroy
   include SessionsHelper, ApplicationHelper
 
   def new
@@ -46,7 +47,17 @@ class CatsController < ApplicationController
     @cats = Cat.page(params[:page]).per(10)
   end
 
+  def destroy
+    Cat.find(params[:id]).destroy
+    flash[:success] = "Utilisateur supprimé."
+    redirect_to cats_path
+  end
+
   private
+
+  def admin_user
+    redirect_to(root_path) unless @current_user.admin?
+  end
 
   def authenticate
     deny_access unless signed_in?
