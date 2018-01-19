@@ -1,5 +1,6 @@
 class Cat < ApplicationRecord
   #attr_accessor :password
+  has_many :microposts, :dependent => :destroy
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

@@ -15,6 +15,13 @@
         <% end %>
       </p>
     </td>
+    <td>
+      <% unless @cat.microposts.empty? %>
+        <table class="microposts" summary="Micro-messages de l'utilisateur">
+          <%= render @microposts %>
+        </table>
+      <% end %>
+    </td>
     <td class="sidebar round">
       <strong>Nom</strong> <%= @cat.name %><br/>
       <strong>URL</strong>  <%= link_to cat_path(@cat), @cat %>
