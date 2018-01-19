@@ -185,3 +185,6 @@ ul.users {
     list-style: none;
 }
 
+.pagination{
+    float: left;
+}

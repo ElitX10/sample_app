@@ -43,7 +43,7 @@ class CatsController < ApplicationController
 
   def index
     @titre = "Tous les utilisateurs"
-    @cats = Cat.all
+    @cats = Cat.page(params[:page]).per(10)
   end
 
   private
