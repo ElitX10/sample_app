@@ -4,6 +4,16 @@
       <h1>
         <%= @cat.name %>
       </h1>
+      <h4>
+        <%= @cat.email %>
+      </h4>
+      <p>
+        <% if signed_in? %>
+          <% if @current_user.id == @cat.id %>
+            <%= link_to "Modifier mon profile", edit_cat_path(@current_user) %>
+          <% end %>
+        <% end %>
+      </p>
     </td>
     <td class="sidebar round">
       <strong>Nom</strong> <%= @cat.name %><br/>

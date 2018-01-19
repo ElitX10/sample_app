@@ -7,4 +7,8 @@ module ApplicationHelper
       "#{base_titre} | #{@titre}"
     end
   end
+
+  def signed_in?
+    session[:cat_id]
+  end
 end

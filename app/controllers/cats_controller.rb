@@ -1,6 +1,6 @@
 class CatsController < ApplicationController
   def new
-    @title = "Inscription"
+    @titre = "Inscription"
     @cat = Cat.new
   end
 
@@ -18,6 +18,22 @@ class CatsController < ApplicationController
     else
       @titre = "Inscription"
       render 'new'
+    end
+  end
+
+  def edit
+    @titre = "Edition du profil"
+    @cat = Cat.find(params[:id])
+  end
+
+  def update
+    @cat = Cat.find(params[:id])
+    if @cat.update_attributes(cat_params)
+      flash[:success] = "Profil actualisé."
+      redirect_to @cat
+    else
+      @titre = "Edition du profil"
+      render 'edit'
     end
   end
 
