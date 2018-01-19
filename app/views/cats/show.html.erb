@@ -9,7 +9,7 @@
       </h4>
       <p>
         <% if signed_in? %>
-          <% if @current_user.id == @cat.id %>
+          <% if current_user?(@cat) %>
             <%= link_to "Modifier mon profile", edit_cat_path(@current_user) %>
           <% end %>
         <% end %>

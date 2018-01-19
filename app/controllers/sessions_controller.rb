@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  include SessionsHelper
+
   def new
     @titre = "S'identifier"
   end
@@ -7,13 +9,13 @@ class SessionsController < ApplicationController
     user = Cat.authenticate(params[:sessions][:email],
                             params[:sessions][:password])
     if user.nil?
-      flash.now[:error] = "Combinaison Email/Mot de passe invalide." + params[:sessions][:email].to_s + ", " + params[:sessions][:password].to_s
+      flash.now[:error] = "Combinaison Email/Mot de passe invalide."
       @titre = "S'identifier"
       render 'new'
     else
       session[:cat_id] = user.id
       flash[:info] = "Vous êtes maintenant connecté"
-      redirect_to user
+      redirect_back_or user
     end
   end
 
